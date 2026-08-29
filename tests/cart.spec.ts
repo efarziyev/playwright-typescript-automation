@@ -12,7 +12,7 @@ test.describe('Shopping Cart', () => {
     );
   });
 
-  test('user can add a product to the cart', async ({ productsPage }) => {
+  test('user can add a product to the cart @smoke @regression', async ({ productsPage }) => {
     await productsPage.addBackpackToCart();
 
     await expect(productsPage.cartBadge).toHaveText('1');
