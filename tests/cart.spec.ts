@@ -5,12 +5,14 @@ import { TAGS } from '../utils/tags';
 test.describe('Shopping Cart', () => {
 
   test.beforeEach(async ({ loginPage }) => {
-    await loginPage.open();
+    await test.step('Login with standard user', async () => {
+      await loginPage.open();
 
-    await loginPage.login(
-      users.standard.username,
-      users.standard.password
-    );
+      await loginPage.login(
+        users.standard.username,
+        users.standard.password
+      );
+    });
   });
 
   test(
@@ -19,9 +21,14 @@ test.describe('Shopping Cart', () => {
       tag: [TAGS.smoke, TAGS.regression]
     },
     async ({ productsPage }) => {
-      await productsPage.addBackpackToCart();
 
-      await expect(productsPage.cartBadge).toHaveText('1');
+      await test.step('Add backpack to the cart', async () => {
+        await productsPage.addBackpackToCart();
+      });
+
+      await test.step('Verify cart contains one item', async () => {
+        await expect(productsPage.cartBadge).toHaveText('1');
+      });
     }
   );
 
@@ -31,12 +38,20 @@ test.describe('Shopping Cart', () => {
       tag: TAGS.regression
     },
     async ({ page, productsPage }) => {
-      await productsPage.addBackpackToCart();
-      await productsPage.openCart();
 
-      await expect(
-        page.getByText('Sauce Labs Backpack')
-      ).toBeVisible();
+      await test.step('Add backpack to the cart', async () => {
+        await productsPage.addBackpackToCart();
+      });
+
+      await test.step('Open shopping cart', async () => {
+        await productsPage.openCart();
+      });
+
+      await test.step('Verify backpack is displayed in the cart', async () => {
+        await expect(
+          page.getByText('Sauce Labs Backpack')
+        ).toBeVisible();
+      });
     }
   );
 
