@@ -2,7 +2,7 @@
 
 A test automation framework built with Playwright and TypeScript for UI, API, and accessibility testing.
 
-This project demonstrates practical automation patterns used in modern QA engineering, including Page Object Model, custom fixtures, reusable test data, test tagging, API validation, accessibility checks, cross-browser execution, and CI integration.
+This project demonstrates practical automation patterns used in modern QA engineering, including Page Object Model, custom fixtures, reusable test data, centralized test tagging, API validation, accessibility scanning, cross-browser execution, and CI integration.
 
 ## Tech Stack
 
@@ -19,7 +19,7 @@ Current examples include:
 - Successful and unsuccessful login scenarios
 - Product and shopping cart validation
 - API GET and POST requests
-- Accessibility validation
+- Accessibility scanning and violation reporting with Axe Core
 - Positive and negative test scenarios
 - Smoke and regression test suites
 - Cross-browser testing with Chromium and Firefox
@@ -97,7 +97,8 @@ View the HTML report:
 - Centralized test tags
 - Smoke and regression test execution
 - UI and API automation
-- Accessibility testing with Axe Core
+- Accessibility scanning with Axe Core
+- Accessibility violation reporting
 - Structured test steps
 - Parallel test execution
 - Cross-browser testing
@@ -128,4 +129,10 @@ This allows targeted test execution for different testing needs.
 
 ## Future Improvements
 
-Planned improvements include expanding end-to-end coverage, adding more API scenarios, environment-based configuration, and additional reusable test utilities.
+Planned improvements include:
+
+- Expanding end-to-end test coverage
+- Adding additional API scenarios
+- Environment-based configuration
+- Additional reusable test utilities
+- Extended accessibility coverage
