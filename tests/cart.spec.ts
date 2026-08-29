@@ -18,7 +18,10 @@ test.describe('Shopping Cart', () => {
     await expect(productsPage.cartBadge).toHaveText('1');
   });
 
-  test('added product is displayed in the cart', async ({
+  test('added product is displayed in the cart @regression', async ({
+  page,
+  productsPage
+}) => {s
     page,
     productsPage
   }) => {
