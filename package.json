@@ -1,17 +1,9 @@
-{
-  "name": "playwright-typescript-automation",
-  "version": "1.0.0",
-  "description": "End-to-end test automation framework using Playwright and TypeScript",
-  "scripts": {
-    "test": "playwright test",
-    "test:headed": "playwright test --headed",
-    "test:ui": "playwright test --ui",
-    "test:debug": "playwright test --debug",
-    "report": "playwright show-report"
-  },
-  "devDependencies": {
-    "@playwright/test": "^1.55.0",
-    "@types/node": "^22.0.0",
-    "typescript": "^5.9.0"
-  }
-}
+"scripts": {
+  "test": "playwright test",
+  "test:headed": "playwright test --headed",
+  "test:ui": "playwright test --ui",
+  "test:debug": "playwright test --debug",
+  "test:smoke": "playwright test --grep @smoke",
+  "test:regression": "playwright test --grep @regression",
+  "report": "playwright show-report"
+},
