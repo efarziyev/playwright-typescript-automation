@@ -1,13 +1,11 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
+import { test, expect } from '../fixtures/testFixtures';
 import { users } from '../test-data/users';
 
 test.describe('Login', () => {
 
-  test('standard user can log in successfully', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-
+  test('standard user can log in successfully', async ({ loginPage, page }) => {
     await loginPage.open();
+
     await loginPage.login(
       users.standard.username,
       users.standard.password
@@ -17,10 +15,9 @@ test.describe('Login', () => {
     await expect(page.getByText('Products')).toBeVisible();
   });
 
-  test('locked user cannot log in', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-
+  test('locked user cannot log in', async ({ loginPage }) => {
     await loginPage.open();
+
     await loginPage.login(
       users.locked.username,
       users.locked.password
