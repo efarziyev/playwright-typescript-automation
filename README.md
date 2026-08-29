@@ -1,14 +1,15 @@
 # Playwright TypeScript Automation
 
-A test automation project built with Playwright and TypeScript for UI and API testing.
+A test automation framework built with Playwright and TypeScript for UI, API, and accessibility testing.
 
-The project demonstrates some of the patterns I use when building and maintaining automated test suites, including page objects, reusable test data, API validation, cross-browser execution, and CI integration.
+This project demonstrates practical automation patterns used in modern QA engineering, including Page Object Model, custom fixtures, reusable test data, test tagging, API validation, accessibility checks, cross-browser execution, and CI integration.
 
 ## Tech Stack
 
 - Playwright
 - TypeScript
 - Node.js
+- Axe Core
 - GitHub Actions
 
 ## Test Coverage
@@ -18,7 +19,9 @@ Current examples include:
 - Successful and unsuccessful login scenarios
 - Product and shopping cart validation
 - API GET and POST requests
+- Accessibility validation
 - Positive and negative test scenarios
+- Smoke and regression test suites
 - Cross-browser testing with Chromium and Firefox
 
 ## Project Structure
@@ -27,18 +30,26 @@ Current examples include:
       LoginPage.ts
       ProductsPage.ts
 
+    fixtures/
+      testFixtures.ts
+
     test-data/
       users.ts
+
+    utils/
+      tags.ts
 
     tests/
       login.spec.ts
       cart.spec.ts
       api.spec.ts
+      accessibility.spec.ts
 
     .github/workflows/
       playwright.yml
 
     playwright.config.ts
+    package.json
 
 ## Running the Tests
 
@@ -53,6 +64,18 @@ Install Playwright browsers:
 Run all tests:
 
     npm test
+
+Run smoke tests:
+
+    npm run test:smoke
+
+Run regression tests:
+
+    npm run test:regression
+
+Run accessibility tests:
+
+    npm run test:a11y
 
 Run tests in headed mode:
 
@@ -69,8 +92,13 @@ View the HTML report:
 ## Framework Features
 
 - Page Object Model
+- Custom Playwright fixtures
 - Reusable test data
+- Centralized test tags
+- Smoke and regression test execution
 - UI and API automation
+- Accessibility testing with Axe Core
+- Structured test steps
 - Parallel test execution
 - Cross-browser testing
 - Automatic retries in CI
@@ -84,8 +112,20 @@ View the HTML report:
 
 The test suite runs automatically through GitHub Actions on pushes and pull requests to the main branch.
 
-Test reports are uploaded as workflow artifacts after each run.
+The CI pipeline installs dependencies and Playwright browsers, executes the automated test suite, and uploads test reports as workflow artifacts.
 
-## Next Steps
+## Test Organization
 
-I'm continuing to expand this project with additional end-to-end scenarios, API coverage, reusable fixtures, and accessibility testing.
+Tests are categorized using centralized tags such as:
+
+- `@smoke`
+- `@regression`
+- `@api`
+- `@e2e`
+- `@a11y`
+
+This allows targeted test execution for different testing needs.
+
+## Future Improvements
+
+Planned improvements include expanding end-to-end coverage, adding more API scenarios, environment-based configuration, and additional reusable test utilities.
