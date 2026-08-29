@@ -1,5 +1,6 @@
 import { test, expect } from '../fixtures/testFixtures';
 import { users } from '../test-data/users';
+import { TAGS } from '../utils/tags';
 
 test.describe('Shopping Cart', () => {
 
@@ -12,25 +13,31 @@ test.describe('Shopping Cart', () => {
     );
   });
 
-  test('user can add a product to the cart @smoke @regression', async ({ productsPage }) => {
-    await productsPage.addBackpackToCart();
+  test(
+    'user can add a product to the cart',
+    {
+      tag: [TAGS.smoke, TAGS.regression]
+    },
+    async ({ productsPage }) => {
+      await productsPage.addBackpackToCart();
 
-    await expect(productsPage.cartBadge).toHaveText('1');
-  });
+      await expect(productsPage.cartBadge).toHaveText('1');
+    }
+  );
 
-  test('added product is displayed in the cart @regression', async ({
-  page,
-  productsPage
-}) => {s
-    page,
-    productsPage
-  }) => {
-    await productsPage.addBackpackToCart();
-    await productsPage.openCart();
+  test(
+    'added product is displayed in the cart',
+    {
+      tag: TAGS.regression
+    },
+    async ({ page, productsPage }) => {
+      await productsPage.addBackpackToCart();
+      await productsPage.openCart();
 
-    await expect(
-      page.getByText('Sauce Labs Backpack')
-    ).toBeVisible();
-  });
+      await expect(
+        page.getByText('Sauce Labs Backpack')
+      ).toBeVisible();
+    }
+  );
 
 });
