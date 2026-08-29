@@ -15,7 +15,7 @@ test.describe('Login', () => {
     await expect(page.getByText('Products')).toBeVisible();
   });
 
-  test('locked user cannot log in', async ({ loginPage }) => {
+  test('locked user cannot log in @regression', async ({ loginPage }) => {
     await loginPage.open();
 
     await loginPage.login(
