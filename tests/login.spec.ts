@@ -3,7 +3,7 @@ import { users } from '../test-data/users';
 
 test.describe('Login', () => {
 
-  test('standard user can log in successfully', async ({ loginPage, page }) => {
+  test('standard user can log in successfully @smoke @regression', async ({ loginPage, page }) => {
     await loginPage.open();
 
     await loginPage.login(
